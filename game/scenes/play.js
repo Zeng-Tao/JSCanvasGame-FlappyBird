@@ -7,10 +7,10 @@ class Play extends Scene {
 
     setup() {
         // setup 在 TaoGame 绑定 scene 时执行
-        this.sky = this.addSky()
-        this.cloudes = this.addClouds()
-        this.player = this.addPlayer()
-        this.enemies = this.addEnemies()
+        this.addBackGround()
+        // this.cloudes = this.addClouds()
+        // this.player = this.addPlayer()
+        // this.enemies = this.addEnemies()
         // 注册场景按键事件
         // this.registerEvents()
     }
@@ -19,13 +19,28 @@ class Play extends Scene {
         this.score += 10
     }
 
-    addSky() {
-        let status = {
-            name: 'sky',
+    addBackGround() {
+        // 三张滚动的背景
+        for (let i = 0; i < 3; i++) {
+            let status = {
+                x: 357 * i,
+                y: -200,
+                name: 'background',
+            }
+            let background = new BackGround(status, this.game)
+            this.game.addSprites(background)
         }
-        let sky = new Sky(status, this.game)
-        this.game.addSprites(sky)
-        return sky
+
+        // 三张滚动的地面
+        for (let i = 0; i < 3; i++) {
+            let status = {
+                x: 336 * i,
+                y: this.game.height - 112,
+                name: 'land',
+            }
+            let land = new Land(status, this.game)
+            this.game.addSprites(land)
+        }
     }
 
     addPlayer() {
@@ -49,7 +64,7 @@ class Play extends Scene {
         for (let i = 0; i < count; i++) {
             let cloud = new Cloud(status, this.game)
             this.game.addSprites(cloud)
-            clouds.push(cloud)    
+            clouds.push(cloud)
         }
         return clouds
     }
@@ -62,10 +77,10 @@ class Play extends Scene {
             let no = randomIntBetween(0, 4)
             let status = {
                 name: `enemy${no}`,
-            }    
+            }
             let e = new Enemy(status, this.game)
             this.game.addSprites(e)
-            enemies.push(e)    
+            enemies.push(e)
         }
         return enemies
     }
@@ -84,14 +99,14 @@ class Play extends Scene {
 
     update() {
         super.update()
-        let enemies = this.enemies
-        enemies.forEach((e, index)=> {
-            if (e.die) {
-                enemies.splice(index, 1)
-            }
-        })
-        this.enemies = enemies
-        this.addEnemies()
+        // let enemies = this.enemies
+        // enemies.forEach((e, index)=> {
+        //     if (e.die) {
+        //         enemies.splice(index, 1)
+        //     }
+        // })
+        // this.enemies = enemies
+        // this.addEnemies()
     }
 
     backToHome() {

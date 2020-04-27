@@ -68,18 +68,13 @@ let setupDebugPanel = function () {
 
 let loadimages = function () {
     let images = {
-        cloud: 'images/cloud.png',
-        sky: 'images/sky.png',
         player: 'images/player.png',
-        enemy0: 'images/enemy0.png',
-        enemy1: 'images/enemy1.png',
-        enemy2: 'images/enemy2.png',
-        enemy3: 'images/enemy3.png',
-        enemy4: 'images/enemy4.png',
-        player_bullet: 'images/player_bullet.png',
-        enemy_bullet: 'images/enemy_bullet.png',
-        particle0: 'images/particle0.png',
-        particle2: 'images/particle2.png',
+
+        background: 'images/bg.png',
+        land: 'images/land.png',
+        'pipe-up': 'images/pipe-up.png',
+        'pipe-down': 'images/pipe-down.png',
+        'pure-bg-color': 'images/pure-bg-color.png',
     }
     return images
 }
@@ -87,8 +82,8 @@ let loadimages = function () {
 
 let initGame = function () {
     let images = loadimages()
-    game = new TaoGame(400, 500, images)
-    // game.debugMode = true
+    game = new TaoGame(600, 400, images)
+    game.debugMode = true
     s = new Play('play', game)
     // s = new Home('home', game)
     // s = new Edit('edit', game)

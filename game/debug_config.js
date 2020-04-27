@@ -7,11 +7,11 @@ debug_config = {
         min: 1,
     },
 
-    player_bullet_speed: {
-        description: '英雄子弹速度',
-        id: 'id-player-bullet-speed',
-        value: 5,
-        max: 20,
+    background: {
+        description: '背景移动速度',
+        id: 'id-background',
+        value: 3,
+        max: 5,
         min: 1,
     },
 
