@@ -30,6 +30,9 @@ class TaoGame {
         let c = document.createElement('canvas')
         c.width = this.width
         c.height = this.height
+        this.centerX = this.width / 2
+        this.centerY = this.height / 2
+        
         c.id = 'id-cavas'
         document.querySelector('body').insertAdjacentElement('afterbegin', c)
         this.canvas = document.querySelector('#id-cavas')
@@ -135,6 +138,13 @@ class TaoGame {
 
     addSprites(sprites) {
         if (sprites instanceof Sprite) {
+            sprites.id = this.id
+            this.id += 1
+            this.scene.sprites.push(sprites)
+            return
+        }
+
+        if (sprites instanceof AnimationSprite) {
             sprites.id = this.id
             this.id += 1
             this.scene.sprites.push(sprites)

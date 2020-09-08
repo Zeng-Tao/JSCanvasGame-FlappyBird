@@ -8,8 +8,7 @@ class Play extends Scene {
     setup() {
         // setup 在 TaoGame 绑定 scene 时执行
         this.addBackGround()
-        // this.cloudes = this.addClouds()
-        // this.player = this.addPlayer()
+        this.player = this.addPlayer()
         // this.enemies = this.addEnemies()
         // 注册场景按键事件
         // this.registerEvents()
@@ -46,12 +45,13 @@ class Play extends Scene {
     addPlayer() {
         let status = {
             name: 'player',
+            currentAnimation: 'fly',
+            x: 200,
+            y: 50,
         }
         let player = new Player(status, this.game)
-        let x = (this.game.canvas.width + player.width) / 2
-        let y = this.game.canvas.height - player.height - 50
-        player.x = x
-        player.y = y
+        // 添加动画
+        player.addAnimation('fly', ['b3', 'b2', 'b1'])
         this.game.addSprites(player)
         return player
     }
