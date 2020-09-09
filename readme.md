@@ -8,6 +8,7 @@
 ## 特点
 
 - 同 [JSCanvasGame-ShotFlight](https://github.com/Zeng-Tao/JSCanvasGame-ShotFlight)
+- 动画精灵左右翻转, 上下旋转
 
 
 ## 使用
