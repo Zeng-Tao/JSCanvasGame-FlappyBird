@@ -3,7 +3,7 @@ class Sprite {
     constructor(status, game) {
         this.game = game
         this.die = false
-        this.id = null
+        this.id = game.newId()
         this.image = null
         this.width = null
         this.height = null

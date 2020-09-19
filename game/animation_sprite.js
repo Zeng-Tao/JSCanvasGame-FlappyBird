@@ -3,7 +3,7 @@ class AnimationSprite {
     constructor(status, game) {
         this.game = game
         this.die = false
-        this.id = null
+        this.id = game.newId()
         this.width = null
         this.height = null
         this.centerX = null

@@ -138,24 +138,26 @@ class TaoGame {
 
     addSprites(sprites) {
         if (sprites instanceof Sprite) {
-            sprites.id = this.id
-            this.id += 1
             this.scene.sprites.push(sprites)
             return
         }
 
         if (sprites instanceof AnimationSprite) {
-            sprites.id = this.id
-            this.id += 1
+            this.scene.sprites.push(sprites)
+            return
+        }
             this.scene.sprites.push(sprites)
             return
         }
 
         for (let s of sprites) {
-            s.id = this.id + 1
-            this.id += 1
             this.scene.sprites.push(s)
         }
+    }
+
+    newId() {
+        this.id += 1
+        return this.id
     }
 
     draw() {
