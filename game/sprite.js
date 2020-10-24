@@ -18,15 +18,8 @@ class Sprite {
         this.name = status['name']
         this.hp = status['hp'] || 1
         this.image = this.game.getImage(this.name)
-
-        var self = this
-        this.image.onload = function () {
-            self.width = self.image.width
-            self.height = self.image.height
-
-            self.centerX = self.x + self.width / 2
-            self.centerY = self.y + self.height / 2
-        }
+        this.width = this.image.width
+        this.height = this.image.height
     }
 
     draw() {

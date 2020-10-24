@@ -20,9 +20,7 @@ class TaoGame {
     }
 
     getImage(name) {
-        let img = new Image()
-        img.src = this.images[name]
-        return img
+        return this.images[name]
     }
 
     init() {
@@ -147,6 +145,11 @@ class TaoGame {
             return
         }
         
+        if (sprites instanceof PipePair) {
+            this.scene.sprites.push(sprites)
+            return
+        }
+
         for (let s of sprites) {
             this.scene.sprites.push(s)
         }

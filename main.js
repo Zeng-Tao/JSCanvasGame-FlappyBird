@@ -66,7 +66,7 @@ let setupDebugPanel = function () {
 }
 
 
-let loadimages = function () {
+let initSource = function () {
     let images = {
         player: 'images/b1.png',
         b1: 'images/b1.png',
@@ -77,14 +77,23 @@ let loadimages = function () {
         land: 'images/land.png',
         'pipe-up': 'images/pipe-up.png',
         'pipe-down': 'images/pipe-down.png',
-        'pure-bg-color': 'images/pure-bg-color.png',
     }
-    return images
+
+    let length = Object.keys(images).length
+    let imgs = {}
+    for (let name in images) {
+        let img = new Image()
+        img.src = images[name]
+        img.onload = function() {
+            imgs[name] = img
+            if (length === Object.keys(imgs).length) {
+                return initGame(imgs)
+            }
+        }
+    }
 }
 
-
-let initGame = function () {
-    let images = loadimages()
+let initGame = function (images) {
     game = new TaoGame(600, 400, images)
     game.debugMode = true
     s = new Play('play', game)
@@ -96,7 +105,8 @@ let initGame = function () {
 
 
 let __main = function () {
-    let game = initGame()
+    // let game = initGame()
+    initSource()
     setupDebugPanel()
 }
 

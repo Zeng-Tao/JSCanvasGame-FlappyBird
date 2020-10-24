@@ -8,6 +8,8 @@ class Play extends Scene {
     setup() {
         // setup 在 TaoGame 绑定 scene 时执行
         this.addBackGround()
+        this.pairs = this.addPipePairs(3)
+        this.addGround()
         this.player = this.addPlayer()
         // this.enemies = this.addEnemies()
         // 注册场景按键事件
@@ -16,6 +18,19 @@ class Play extends Scene {
 
     addScore() {
         this.score += 10
+    }
+
+    addGround() {
+        // 三张滚动的地面
+        for (let i = 0; i < 3; i++) {
+            let status = {
+                x: 336 * i,
+                y: this.game.height - 112,
+                name: 'land',
+            }
+            let land = new Land(status, this.game)
+            this.game.addSprites(land)
+        }
     }
 
     addBackGround() {
@@ -28,17 +43,6 @@ class Play extends Scene {
             }
             let background = new BackGround(status, this.game)
             this.game.addSprites(background)
-        }
-
-        // 三张滚动的地面
-        for (let i = 0; i < 3; i++) {
-            let status = {
-                x: 336 * i,
-                y: this.game.height - 112,
-                name: 'land',
-            }
-            let land = new Land(status, this.game)
-            this.game.addSprites(land)
         }
     }
 
@@ -54,6 +58,16 @@ class Play extends Scene {
         player.addAnimation('fly', ['b3', 'b2', 'b1'])
         this.game.addSprites(player)
         return player
+    }
+
+    addPipePairs(count = 3) {
+        let pairs = []
+        for (let i = 0; i < count; i++) {
+            let pair = new PipePair({ 'x': i * 300 + 400 }, this.game)
+            this.game.addSprites(pair)
+            pairs.push(pair)
+        }
+        return pairs
     }
 
     addClouds(count = 2) {
