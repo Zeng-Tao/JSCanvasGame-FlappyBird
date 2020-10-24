@@ -101,13 +101,3 @@ let __main = function () {
 }
 
 __main()
-
-// 什么叫学习能力？什么是真正的努力？
-//
-//
-//
-// 什么叫学习能力？什么是真正的努力？ - 温酒的回答 - 知乎
-// https://www.zhihu.com/question/65029890/answer/503778541
-//
-// 是否真的有天道酬勤？ - 温酒的回答 - 知乎
-// https://www.zhihu.com/question/22872149/answer/473561178

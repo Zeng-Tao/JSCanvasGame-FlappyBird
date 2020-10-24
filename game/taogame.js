@@ -146,10 +146,7 @@ class TaoGame {
             this.scene.sprites.push(sprites)
             return
         }
-            this.scene.sprites.push(sprites)
-            return
-        }
-
+        
         for (let s of sprites) {
             this.scene.sprites.push(s)
         }
