@@ -11,6 +11,18 @@ class Play extends Scene {
         this.pairs = this.addPipePairs(3)
         this.addGround()
         this.player = this.addPlayer()
+        for (let p of this.pairs) {
+            let up = p.up
+            let down = p.down
+            this.game.whenCollided(up, this.player, () => {
+                window.pause = true
+                // this.player.drop()
+            })
+            this.game.whenCollided(down, this.player, () => {
+                window.pause = true
+                // this.player.drop()
+            })
+        }
         // this.enemies = this.addEnemies()
         // 注册场景按键事件
         // this.registerEvents()
@@ -113,14 +125,11 @@ class Play extends Scene {
 
     update() {
         super.update()
-        // let enemies = this.enemies
-        // enemies.forEach((e, index)=> {
-        //     if (e.die) {
-        //         enemies.splice(index, 1)
-        //     }
-        // })
-        // this.enemies = enemies
-        // this.addEnemies()
+        for (let p of this.pairs) {
+            if (!this.player.die && p.x == this.player.x) {
+                this.addScore()
+            }
+        }
     }
 
     backToHome() {

@@ -10,6 +10,10 @@ class Player extends AnimationSprite {
         this.setup()
     }
 
+    drop() {
+        this.die = true
+    }
+
     moveUp() {
         this.y -= this.jupmY
         if (this.y < 0) {

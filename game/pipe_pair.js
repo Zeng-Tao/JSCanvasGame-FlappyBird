@@ -12,18 +12,16 @@ class PipePair {
         this.y = status['y'] || 0
         this.speed = 5
         this.hspace = 100
-        this.dwon = new Pipe({name: 'pipe-down'}, this.game)
+        this.down = new Pipe({name: 'pipe-down'}, this.game)
         this.up = new Pipe({name: 'pipe-up'}, this.game)
         this.setup()
     }
 
     setup() {
-        log('setup down, ', this.dwon)
-        log('setup up, ', this.up)
-        this.dwon.x = this.x
-        this.dwon.y = randomIntBetween(-150, 150)
+        this.down.x = this.x
+        this.down.y = randomIntBetween(-150, 150)
         this.up.x = this.y
-        this.up.y = this.dwon.y + this.hspace + this.dwon.height
+        this.up.y = this.down.y + this.hspace + this.down.height
     }
 
     move() {
@@ -33,12 +31,12 @@ class PipePair {
             this.setup()
         }
         this.up.x = this.x
-        this.dwon.x = this.x
+        this.down.x = this.x
     }
 
     draw() {
         this.up.draw()
-        this.dwon.draw()
+        this.down.draw()
     }
 
     debug() {
