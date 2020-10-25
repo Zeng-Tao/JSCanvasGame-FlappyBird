@@ -55,6 +55,10 @@ class AnimationSprite {
         this.currentAnimation = animationName
     }
 
+    stopMove() {
+        this.speed = 0
+    }
+
     draw() {
         this.playAnimation(this.currentAnimation)
 

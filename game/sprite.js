@@ -22,6 +22,10 @@ class Sprite {
         this.height = this.image.height
     }
 
+    stopMove() {
+        this.speed = 0
+    }
+
     draw() {
         if (this.die) {
             return

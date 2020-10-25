@@ -96,8 +96,8 @@ let initSource = function () {
 let initGame = function (images) {
     game = new TaoGame(600, 400, images)
     game.debugMode = true
-    s = new Play('play', game)
-    // s = new Home('home', game)
+    // s = new Play('play', game)
+    s = new Home('home', game)
     // s = new Edit('edit', game)
     game.runWithScene(s)
     return game

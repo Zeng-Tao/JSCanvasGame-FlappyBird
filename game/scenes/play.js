@@ -15,17 +15,23 @@ class Play extends Scene {
             let up = p.up
             let down = p.down
             this.game.whenCollided(up, this.player, () => {
-                window.pause = true
-                // this.player.drop()
+                this.stopMove()
+                this.gameOver()
             })
             this.game.whenCollided(down, this.player, () => {
-                window.pause = true
-                // this.player.drop()
+                this.stopMove()
+                this.gameOver()
             })
         }
         // this.enemies = this.addEnemies()
         // 注册场景按键事件
-        // this.registerEvents()
+        this.registerEvents()
+    }
+
+    stopMove() {
+        for (let s of this.sprites) {
+            s.stopMove()
+        }
     }
 
     addScore() {
@@ -135,6 +141,12 @@ class Play extends Scene {
     backToHome() {
         let s = new Home('home', this.game)
         this.game.isReload = false
+        this.game.runWithScene(s)
+    }
+
+    gameOver() {
+        let s = new End('end', this.game, {'score': this.score})
+        // this.game.isReload = false
         this.game.runWithScene(s)
     }
 

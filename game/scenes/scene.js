@@ -1,12 +1,13 @@
 class Scene {
     // constructor
-    constructor(name, game) {
+    constructor(name, game, args) {
         this.name = name
         this.game = game
         this.actions = {}
         this.keys = {}
         this.sprites = []
         this.collidPairs = []
+        this.args = args
     }
 
     drawSprites() {

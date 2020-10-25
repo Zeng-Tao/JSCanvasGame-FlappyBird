@@ -16,6 +16,10 @@ class PipePair {
         this.up = new Pipe({name: 'pipe-up'}, this.game)
         this.setup()
     }
+    
+    stopMove() {
+        this.speed = 0
+    }
 
     setup() {
         this.down.x = this.x

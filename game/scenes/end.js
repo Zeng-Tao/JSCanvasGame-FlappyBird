@@ -1,23 +1,13 @@
-class Home extends Scene {
+class End extends Scene {
     // constructor
-    constructor(name, game) {
-        super(name, game)
+    constructor(name, game, args) {
+        super(name, game, args)
         // location.reload()
     }
 
     setup() {
-        // setup 在 TaoGame 绑定 scene 时执行
-
-        // 重新加载页面, 否则随着不断的重新开始游戏, fps 会越来越快
-        // 不明白为什么, 所以在进入 home 页时, 手动重新加载页面
-        // if (!this.game.isReload) {
-        //     location.reload()
-        //     this.game.isReload = true
-        // }
-
         this.addBackGround()
         this.addGround()
-        this.player = this.addPlayer()
 
         // 注册场景按键事件
         this.registerEvents()
@@ -49,35 +39,25 @@ class Home extends Scene {
         }
     }
 
-    addPlayer() {
-        let status = {
-            name: 'player',
-            currentAnimation: 'fly',
-            x: 250,
-            y: 80,
-        }
-        let player = new Player(status, this.game)
-        // 添加动画
-        player.addAnimation('fly', ['b3', 'b2', 'b1'])
-        this.game.addSprites(player)
-        return player
-    }
-
     newGame() {
         let s = new Play('play', this.game)
         this.game.runWithScene(s)
     }
 
     registerEvents() {
-        this.game.registerEvent('k', () => {
+        this.game.registerEvent('r', () => {
             this.newGame()
         })
     }
 
     showInfo() {
         let g = this.game
-        let text = "按 K 开始游戏!"
+        let text = "按 R 重新开始游戏!"
         g.drawText(text, 150, 150, 36)
+        
+        let score = this.args['score']
+        score = `得分 ${score}`
+        g.drawText(score, 200, 190, 28)
     }
 
     draw() {
@@ -87,8 +67,5 @@ class Home extends Scene {
 
     update() {
         super.update()
-        if (this.player.y > 80) {
-            this.player.moveUp()
-        }
     }
 }
